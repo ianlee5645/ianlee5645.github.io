@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ianblog.top/2023/04/15/JS%E7%BB%A7%E6%89%BF/</loc>
+    
+    <lastmod>2023-09-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://ianblog.top/link/index.html</loc>
     
     <lastmod>2023-09-15</lastmod>
@@ -28,24 +37,29 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://ianblog.top/2023/09/15/hello-world/</loc>
-    
-    <lastmod>2023-09-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://ianblog.top/</loc>
-    <lastmod>2023-09-15</lastmod>
+    <lastmod>2023-09-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>http://ianblog.top/tags/JS/</loc>
+    <lastmod>2023-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>http://ianblog.top/categories/JavaScript%E8%BF%9B%E9%98%B6/</loc>
+    <lastmod>2023-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
