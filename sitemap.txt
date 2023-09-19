@@ -1,3 +1,4 @@
+http://ianblog.top/2023/04/23/closure/
 http://ianblog.top/2023/04/19/queue/
 http://ianblog.top/2023/04/17/stack/
 http://ianblog.top/2023/04/15/js-extends/
