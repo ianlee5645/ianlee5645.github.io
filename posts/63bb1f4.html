@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据结构——队列 | Ian的Blog小屋</title><meta name="author" content="Ian"><meta name="copyright" content="Ian"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文介绍了常见的数据结构——队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构——队列">
+<meta property="og:url" content="http://ianblog.top/posts/63bb1f4.html">
+<meta property="og:site_name" content="Ian的Blog小屋">
+<meta property="og:description" content="本文介绍了常见的数据结构——队列">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ianblog.top/img/covers/queue.png">
+<meta property="article:published_time" content="2023-04-19T03:21:01.000Z">
+<meta property="article:modified_time" content="2023-09-20T03:06:25.566Z">
+<meta property="article:author" content="Ian">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ianblog.top/img/covers/queue.png"><link rel="shortcut icon" href="/img/favicon-32x32.png"><link rel="canonical" href="http://ianblog.top/posts/63bb1f4.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta/><meta/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?e5c7c9904f1eb4e50e655aa02fce0790";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Ian","link":"链接: ","source":"来源: Ian的Blog小屋","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据结构——队列',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-20 11:06:25'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Ian的Blog小屋" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 欣赏</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/covers/queue.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Ian的Blog小屋"><span class="site-name">Ian的Blog小屋</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group hide" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 欣赏</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">数据结构——队列</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2023-04-19T03:21:01.000Z" title="发表于 2023-04-19 11:21:01">2023-04-19</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="数据结构——队列"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>队列是一种<strong>先进先出</strong>的数据结构。</p>
+</blockquote>
+<h2 id="队列是什么？"><a href="#队列是什么？" class="headerlink" title="队列是什么？"></a>队列是什么？</h2><p>对列遵循<strong>先进先出（FIFO）</strong>，在队列尾部添加元素，在顶部移除元素。</p>
+<p>队列在日常生活中是很常见的，比如买票排队。</p>
+<h2 id="创建队列"><a href="#创建队列" class="headerlink" title="创建队列"></a>创建队列</h2><p>由于队列是从顶部移除元素，所以不仅需要获取队列尾部，还需要定义变量记录队列顶部位置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Queue</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">items</span> = &#123;&#125;; <span class="comment">// 队列</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">lastPos</span> = <span class="number">0</span>; <span class="comment">// 追踪最后元素</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstPos</span> = <span class="number">0</span>; <span class="comment">// 追踪第一个元素</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是一些方法了：最基础的就是添加与删除了</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>enqueue</code>(element)</td>
+<td>添加元素</td>
+</tr>
+<tr>
+<td><code>dequeue()</code></td>
+<td>删除第一项元素并返回</td>
+</tr>
+<tr>
+<td><code>front()</code></td>
+<td>返回队列第一项元素</td>
+</tr>
+<tr>
+<td><code>isEmpty()</code></td>
+<td>检查队列是否为空</td>
+</tr>
+<tr>
+<td><code>size()</code></td>
+<td>返回队列长度</td>
+</tr>
+<tr>
+<td><code>clear()</code></td>
+<td>清空队列</td>
+</tr>
+<tr>
+<td><code>toString()</code></td>
+<td>以字符串的方式打印队列</td>
+</tr>
+</tbody></table>
+<h3 id="1-添加元素"><a href="#1-添加元素" class="headerlink" title="1. 添加元素"></a>1. 添加元素</h3><p>以<code>lastPos</code>作为键，将元素添加进队列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">enqueue</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">items</span>[<span class="variable language_">this</span>.<span class="property">lastPos</span>] = element;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">lastPos</span>++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-删除元素"><a href="#2-删除元素" class="headerlink" title="2. 删除元素"></a>2. 删除元素</h3><p>首先取得首个元素，然后将其删除，要注意的是，删除首个元素之后，它的下一个元素就成了首个元素了，所以需要将<code>firstPos</code>的值更新。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">dequeue</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> result = <span class="variable language_">this</span>.<span class="property">items</span>[<span class="variable language_">this</span>.<span class="property">firstPos</span>];</span><br><span class="line">  <span class="keyword">delete</span> <span class="variable language_">this</span>.<span class="property">items</span>[<span class="variable language_">this</span>.<span class="property">firstPos</span>];</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">firstPos</span>++; <span class="comment">// 自增，首个元素的索引后移</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-第一项元素"><a href="#3-第一项元素" class="headerlink" title="3. 第一项元素"></a>3. 第一项元素</h3><p><code>firstPos</code>用来追踪第一项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">front</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">items</span>[<span class="variable language_">this</span>.<span class="property">firstPos</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-队列是否为空"><a href="#4-队列是否为空" class="headerlink" title="4. 队列是否为空"></a>4. 队列是否为空</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isEmpty</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">lastPos</span> - <span class="variable language_">this</span>.<span class="property">firstPos</span> === <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 或者为了复用方法</span></span><br><span class="line">  <span class="comment">// return this.size() === 0;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-队列长度"><a href="#5-队列长度" class="headerlink" title="5. 队列长度"></a>5. 队列长度</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">size</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">lastPos</span> - <span class="variable language_">this</span>.<span class="property">firstPos</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-清空队列"><a href="#6-清空队列" class="headerlink" title="6. 清空队列"></a>6. 清空队列</h3><p>重置队列。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">clear</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">items</span> = &#123;&#125;;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">lastPos</span> = <span class="number">0</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">firstPos</span> = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-打印队列"><a href="#7-打印队列" class="headerlink" title="7. 打印队列"></a>7. 打印队列</h3><p>将队列中的元素以字符串的形式打印出来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">toString</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="title function_">isEmpty</span>()) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> str = <span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.items[<span class="variable language_">this</span>.firstPos]&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="variable language_">this</span>.<span class="property">firstPos</span> + <span class="number">1</span>; i &lt; <span class="variable language_">this</span>.<span class="property">lastPos</span>; i++) &#123;</span><br><span class="line">    str += <span class="string">`,<span class="subst">$&#123;<span class="variable language_">this</span>.items[i]&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> queue = <span class="keyword">new</span> <span class="title class_">Queue</span>();</span><br><span class="line">queue.<span class="title function_">enqueue</span>(<span class="string">&#x27;ian&#x27;</span>);</span><br><span class="line">queue.<span class="title function_">enqueue</span>(<span class="string">&#x27;jack&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">toString</span>()); <span class="comment">// &#x27;ian,jack&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">size</span>()); <span class="comment">// 2</span></span><br><span class="line">queue.<span class="title function_">dequeue</span>(); <span class="comment">// &#x27;ian&#x27;</span></span><br><span class="line">queue.<span class="title function_">dequeue</span>(); <span class="comment">// &#x27;jack&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(queue.<span class="title function_">toString</span>()); <span class="comment">// &#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="双端队列"><a href="#双端队列" class="headerlink" title="双端队列"></a>双端队列</h2><p>上面我们创建出了一个队列，实现了从队列尾部添加元素，顶部移除元素。如果我们还想要实现从队列尾部删除元素，从顶部添加元素呢？这就需要借助双端队列了。</p>
+<p><strong>双端队列</strong>是一种允许我们同时从队列顶部和尾部添加和移除元素的特殊队列。有了这样的结构，双端队列既能实现<strong>先进先出</strong>又能实现<strong>后进先出</strong>，所以可以将其看作队列和栈相结合的一种数据结构。</p>
+<h3 id="创建双端队列"><a href="#创建双端队列" class="headerlink" title="创建双端队列"></a>创建双端队列</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Deque</span> &#123;</span><br><span class="line">  constructor &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">items</span> = &#123;&#125;;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstPos</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">lastPos</span> = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于双端队列非常类似于队列与栈的结合，所以其方法也是类似的，这里就不再累述了。唯一不同的就是，双端队列还需要实现从顶部添加元素的方法。</p>
+<h4 id="顶部添加元素"><a href="#顶部添加元素" class="headerlink" title="顶部添加元素"></a>顶部添加元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">addFront</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="title function_">isEmpty</span>()) &#123; <span class="comment">// 若为空，则直接添加</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">enqueue</span>();</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">firstPos</span> &gt; <span class="number">0</span>) &#123; <span class="comment">// 若顶部有空位则添加至空位</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstPos</span>--;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">items</span>[<span class="variable language_">this</span>.<span class="property">firstPos</span>] = element;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123; <span class="comment">// 若顶部无空位，则将元素整体往后推一位</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="variable language_">this</span>.<span class="property">lastPos</span>; i &gt; <span class="number">0</span>; i++) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">items</span>[i] = <span class="variable language_">this</span>.<span class="property">items</span>[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">lastPos</span>++;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstPos</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">items</span>[<span class="number">0</span>] = element;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="利用队列解决问题"><a href="#利用队列解决问题" class="headerlink" title="利用队列解决问题"></a>利用队列解决问题</h2><h3 id="1-击鼓传花"><a href="#1-击鼓传花" class="headerlink" title="1. 击鼓传花"></a>1. 击鼓传花</h3><p>问题描述：一群孩子围成一个圈，把花传递给傍边的人，一定时间后，花落在谁手上，谁就被淘汰，最终剩下的孩子为胜者。</p>
+<p>问题思路：采用<strong>循环队列</strong>的方式，将所有孩子添加进队列，依次将顶部孩子移除再添加进尾部（传花之后，当前孩子就变成了最末尾的了）。每次循环淘汰一名孩子，最后剩下一名。</p>
+<p>代码实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*  <span class="doctag">@params</span> element: Array 待添加的元素列表</span></span><br><span class="line"><span class="comment">*  <span class="doctag">@params</span> num: Number 传花的次数</span></span><br><span class="line"><span class="comment">**/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">hotPotato</span>(<span class="params">elements, num</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> queue = <span class="keyword">new</span> <span class="title class_">Queue</span>(); <span class="comment">// 队列</span></span><br><span class="line">  <span class="keyword">const</span> elimitates = []; <span class="comment">// 淘汰列表</span></span><br><span class="line">    </span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; elements.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    queue.<span class="title function_">enqueue</span>(element[i]); <span class="comment">// 循环添加元素</span></span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">while</span>(queue.<span class="title function_">size</span>() &gt; <span class="number">1</span>) &#123; <span class="comment">// 当剩下一个以上时</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line">      queue.<span class="title function_">enqueue</span>(queue.<span class="title function_">dequeue</span>()); <span class="comment">// 出队再入队 -- 循环</span></span><br><span class="line">    &#125;</span><br><span class="line">    elimitates.<span class="title function_">push</span>(queue.<span class="title function_">dequeue</span>()); <span class="comment">// 传完花之后，当前拿到花的淘汰</span></span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    elimitates,</span><br><span class="line">    <span class="attr">winner</span>: queue.<span class="title function_">dequeue</span>()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> names = [<span class="string">&#x27;ian&#x27;</span>, <span class="string">&#x27;jack&#x27;</span>, <span class="string">&#x27;kate&#x27;</span>];</span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">hotPotato</span>(names, <span class="number">4</span>); <span class="comment">// &#x27;ian&#x27; is the winner</span></span><br></pre></td></tr></table></figure>
+
+<p>分析：</p>
+<ol>
+<li>首先添加元素：’ian’ — ‘jack’ — ‘kate’；</li>
+<li>然后传花：<del>‘jack’</del> —‘kate’ — ‘ian’；</li>
+<li>再次传花：<del>‘kate’</del> — ‘ian’；</li>
+<li>剩下：’ian’</li>
+</ol>
+<h3 id="2-回文检查"><a href="#2-回文检查" class="headerlink" title="2. 回文检查"></a>2. 回文检查</h3><p>回文是正反都能读通的单词、词语或者字符串。最简单检验一个值是否是回文结构的方式就是将字符串翻转（<code>reverse</code>），然后再比较前后是否一致。</p>
+<p>实现思路：在上面我们实现了双端队列，能够在两端移除元素，非常适合用于判断一个字符串是否为回文数。只需要循环移除两端元素并且判断是否相等即可。</p>
+<p>代码实现：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isPalindrome</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">&quot;string&quot;</span>) &#123; <span class="comment">// 不是字符串则返回false</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> deque = <span class="keyword">new</span> <span class="title class_">Deque</span>(); <span class="comment">// 队列</span></span><br><span class="line">  <span class="keyword">const</span> string = <span class="title function_">str</span>().<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>); <span class="comment">// 移除空格</span></span><br><span class="line">  <span class="keyword">let</span> firstChar; <span class="comment">// 首个字符</span></span><br><span class="line">  <span class="keyword">let</span> lastChar; <span class="comment">// 末尾字符</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; string.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    deque.<span class="title function_">enqueue</span>(string.<span class="title function_">charAt</span>(i)); <span class="comment">// 循环添加</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (deque.<span class="title function_">size</span>() &gt; <span class="number">1</span>) &#123; <span class="comment">// 有可能遇到字符数为奇数的情况，所以只需最后的size为0或者1就行</span></span><br><span class="line">    firstChar = deque.<span class="title function_">dequeue</span>(); <span class="comment">// 移除首个字符</span></span><br><span class="line">    lastChar = deque.<span class="title function_">pop</span>(); <span class="comment">// 移除末尾字符</span></span><br><span class="line">    <span class="keyword">if</span> (firstChar !== lastChar) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">isPalindrome</span>(<span class="string">&#x27;yakiooikay&#x27;</span>)); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://ianblog.top">Ian</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://ianblog.top/posts/63bb1f4.html">http://ianblog.top/posts/63bb1f4.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://ianblog.top" target="_blank">Ian的Blog小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaScript/">JavaScript</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><div class="post_share"><div class="social-share" data-image="/img/covers/queue.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/7ae5b853.html" title="JavaScript中的闭包"><img class="cover" src="/img/covers/closure.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaScript中的闭包</div></div></a></div><div class="next-post pull-right"><a href="/posts/93fd0851.html" title="数据结构——栈"><img class="cover" src="/img/covers/stack.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据结构——栈</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/93fd0851.html" title="数据结构——栈"><img class="cover" src="/img/covers/stack.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-17</div><div class="title">数据结构——栈</div></div></a></div><div><a href="/posts/7ae5b853.html" title="JavaScript中的闭包"><img class="cover" src="/img/covers/closure.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-23</div><div class="title">JavaScript中的闭包</div></div></a></div><div><a href="/posts/925e68ec.html" title="JavaScript中的继承"><img class="cover" src="/img/covers/js-extends.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-15</div><div class="title">JavaScript中的继承</div></div></a></div></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Ian</div><div class="author-info__description">时间会证明一切</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ianlee5645"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ianlee5645" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">🎆欢迎来到我的博客🎆 交流：🐧1062506728</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">队列是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%98%9F%E5%88%97"><span class="toc-number">2.</span> <span class="toc-text">创建队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-number">2.1.</span> <span class="toc-text">1. 添加元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0"><span class="toc-number">2.2.</span> <span class="toc-text">2. 删除元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AC%AC%E4%B8%80%E9%A1%B9%E5%85%83%E7%B4%A0"><span class="toc-number">2.3.</span> <span class="toc-text">3. 第一项元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%98%9F%E5%88%97%E6%98%AF%E5%90%A6%E4%B8%BA%E7%A9%BA"><span class="toc-number">2.4.</span> <span class="toc-text">4. 队列是否为空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%98%9F%E5%88%97%E9%95%BF%E5%BA%A6"><span class="toc-number">2.5.</span> <span class="toc-text">5. 队列长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%B8%85%E7%A9%BA%E9%98%9F%E5%88%97"><span class="toc-number">2.6.</span> <span class="toc-text">6. 清空队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%89%93%E5%8D%B0%E9%98%9F%E5%88%97"><span class="toc-number">2.7.</span> <span class="toc-text">7. 打印队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">2.8.</span> <span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">双端队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%8F%8C%E7%AB%AF%E9%98%9F%E5%88%97"><span class="toc-number">3.1.</span> <span class="toc-text">创建双端队列</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A1%B6%E9%83%A8%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="toc-number">3.1.1.</span> <span class="toc-text">顶部添加元素</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%98%9F%E5%88%97%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">利用队列解决问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%87%BB%E9%BC%93%E4%BC%A0%E8%8A%B1"><span class="toc-number">4.1.</span> <span class="toc-text">1. 击鼓传花</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9B%9E%E6%96%87%E6%A3%80%E6%9F%A5"><span class="toc-number">4.2.</span> <span class="toc-text">2. 回文检查</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/d5a386f7.html" title="HTTP协议——相关概念">HTTP协议——相关概念</a><time datetime="2023-04-28T02:12:13.000Z" title="发表于 2023-04-28 10:12:13">2023-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7ae5b853.html" title="JavaScript中的闭包">JavaScript中的闭包</a><time datetime="2023-04-23T06:42:36.000Z" title="发表于 2023-04-23 14:42:36">2023-04-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/63bb1f4.html" title="数据结构——队列">数据结构——队列</a><time datetime="2023-04-19T03:21:01.000Z" title="发表于 2023-04-19 11:21:01">2023-04-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/93fd0851.html" title="数据结构——栈">数据结构——栈</a><time datetime="2023-04-17T01:21:01.000Z" title="发表于 2023-04-17 09:21:01">2023-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/925e68ec.html" title="JavaScript中的继承">JavaScript中的继承</a><time datetime="2023-04-15T12:11:06.000Z" title="发表于 2023-04-15 20:11:06">2023-04-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Ian</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, wlcome to my blog</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'Oc5cJ1RfcdEZMt3XQvD5O99L-gzGzoHsz',
+      appKey: 'jZFh1De9j0ymeDYpRSQI9JA6',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="8743002431" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false"> </div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"scriptForm":"local","model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":180,"height":180,"hOffset":30,"vOffset":-10},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
