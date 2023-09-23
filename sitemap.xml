@@ -182,13 +182,6 @@
 
   
   <url>
-    <loc>http://ianblog.top/tags/TypeScript/</loc>
-    <lastmod>2023-09-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ianblog.top/tags/SVG/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -196,7 +189,21 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/tags/JavaScript/</loc>
+    <loc>http://ianblog.top/tags/TypeScript/</loc>
+    <lastmod>2023-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ianblog.top/tags/HTTP/</loc>
+    <lastmod>2023-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ianblog.top/tags/TCP-IP/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -217,14 +224,7 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/tags/HTTP/</loc>
-    <lastmod>2023-09-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://ianblog.top/tags/TCP-IP/</loc>
+    <loc>http://ianblog.top/tags/JavaScript/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -247,13 +247,6 @@
 
   
   <url>
-    <loc>http://ianblog.top/categories/TypeScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2023-09-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ianblog.top/categories/SVG%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -261,7 +254,14 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/categories/JavaScript%E8%BF%9B%E9%98%B6/</loc>
+    <loc>http://ianblog.top/categories/TypeScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2023-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ianblog.top/categories/HTTP%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -275,7 +275,7 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/categories/HTTP%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://ianblog.top/categories/JavaScript%E8%BF%9B%E9%98%B6/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
