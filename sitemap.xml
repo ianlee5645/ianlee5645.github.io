@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://ianblog.top/posts/5b54a0db.html</loc>
-    
-    <lastmod>2023-09-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://ianblog.top/posts/d4bec260.html</loc>
     
     <lastmod>2023-09-23</lastmod>
@@ -20,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/posts/4574082c.html</loc>
+    <loc>http://ianblog.top/posts/eb05c984.html</loc>
     
     <lastmod>2023-09-23</lastmod>
     
@@ -29,7 +20,16 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/posts/eb05c984.html</loc>
+    <loc>http://ianblog.top/posts/5b54a0db.html</loc>
+    
+    <lastmod>2023-09-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ianblog.top/posts/4574082c.html</loc>
     
     <lastmod>2023-09-23</lastmod>
     
@@ -196,13 +196,6 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/tags/JavaScript/</loc>
-    <lastmod>2023-09-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ianblog.top/tags/Hexo/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -225,6 +218,13 @@
   
   <url>
     <loc>http://ianblog.top/tags/TCP-IP/</loc>
+    <lastmod>2023-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ianblog.top/tags/JavaScript/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -261,13 +261,6 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/categories/JavaScript%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2023-09-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://ianblog.top/categories/Hexo-%E4%B8%BB%E9%A2%98%E9%AD%94%E6%94%B9/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -276,6 +269,13 @@
   
   <url>
     <loc>http://ianblog.top/categories/HTTP%E5%8D%8F%E8%AE%AE%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2023-09-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://ianblog.top/categories/JavaScript%E8%BF%9B%E9%98%B6/</loc>
     <lastmod>2023-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
