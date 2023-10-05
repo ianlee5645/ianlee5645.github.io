@@ -1,0 +1,5 @@
+.loading-img {
+  background: url("https://cdn.jsdelivr.net/gh/ianlee5645/BlogImages@main/img/avatar.jpg")
+    no-repeat center center;
+  background-size: cover;
+}
