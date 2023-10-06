@@ -272,14 +272,14 @@
 
   
   <url>
-    <loc>http://ianblog.top/tags/SVG/</loc>
+    <loc>http://ianblog.top/tags/TypeScript/</loc>
     <lastmod>2023-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ianblog.top/tags/TypeScript/</loc>
+    <loc>http://ianblog.top/tags/SVG/</loc>
     <lastmod>2023-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -349,14 +349,14 @@
   </url>
   
   <url>
-    <loc>http://ianblog.top/tags/Vue-Router/</loc>
+    <loc>http://ianblog.top/tags/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2023-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ianblog.top/tags/%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://ianblog.top/tags/Vue-Router/</loc>
     <lastmod>2023-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -372,14 +372,14 @@
 
   
   <url>
-    <loc>http://ianblog.top/categories/SVG%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://ianblog.top/categories/TypeScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2023-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://ianblog.top/categories/TypeScript%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <loc>http://ianblog.top/categories/SVG%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2023-10-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
